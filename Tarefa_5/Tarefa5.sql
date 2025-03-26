@@ -47,3 +47,24 @@ JOIN departamento d ON e.coddepto = d.coddepto;
 
 SELECT * FROM emp_deptoV;
 
+-- Questão 8:
+Begin;
+Create table testeTransacao (coluna1 serial,coluna2 varchar(10));
+Alter table testeTransacao add constraint pk_t primary key(coluna1);
+Commit;
+
+Begin;
+Insert into testeTransacao values (default,'AAA');
+Insert into testeTransacao values (default,'ABC');
+Insert into testeTransacao values (default,'BBB');
+
+Insert into testeTransacao values (default,'BCD');
+Insert into testeTransacao values (default,'CCC');
+Insert into testeTransacao values (default,'CDE');
+Select * from testeTransacao;
+savepoint spt1;
+Rollback to spt1;
+Insert into testeTransacao values (default,'DDD');
+Insert into testeTransacao values (default,'DEF');
+Insert into testeTransacao values (default,'EEE');
+Select * from testeTransacao;
