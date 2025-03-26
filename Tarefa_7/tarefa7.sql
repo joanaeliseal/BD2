@@ -17,6 +17,8 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+SELECT atualizaStatus(2);
+
 -- Usando o FOR:
 CREATE OR REPLACE FUNCTION atualizaStatus_FOR()
 RETURNS VOID AS $$ 
@@ -32,6 +34,8 @@ BEGIN
   END LOOP;
 END;
 $$ LANGUAGE plpgsql;
+
+SELECT atualizaStatus_FOR();
 
 /* 
 Mudanças:
